@@ -12,6 +12,11 @@ Install
 =======
     script/plugin install git://github.com/grosser/xhr_redirect.git
 
+TODO
+====
+ - find a more elegant solution
+ - tests (works fine since > 1 year on production servers...)
+
 Author
 ======
 Michael Grosser  

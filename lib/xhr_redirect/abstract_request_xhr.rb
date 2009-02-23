@@ -1,4 +1,4 @@
-module Grosser
+module XhrRedirect
   module AbstractRequestXhr
     def self.included(base)
       base.class_eval do
