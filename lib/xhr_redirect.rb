@@ -9,6 +9,7 @@ module XhrRedirect
   def redirect_to_with_xhr(options={},response_status={})
     if request.xhr?
       case options
+        when Hash then return redirect_to_with_xhr(url_for(options), response_status)
         when %r{^\w+://.*|/} then return redirect_to_without_xhr(url_plus_xhr(options),response_status)
         when :back
           if request.env["HTTP_REFERER"]
