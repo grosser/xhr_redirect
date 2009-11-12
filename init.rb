@@ -1,10 +1,15 @@
 #fails with unknown spec_rails_example_MODELNAME_path in test
-if RAILS_ENV!='test'
+if defined? RAILS_ENV and RAILS_ENV != 'test'
   require 'xhr_redirect'
+
+  # add to controller for redirect_to support
   ActionController::Base.send :include, XhrRedirect
-  if Rails::VERSION::STRING >= '2.3.0'
-    ActionController::Request.send :include, XhrRedirect::AbstractRequestXhr
-  else
-    ActionController::AbstractRequest.send :include, XhrRedirect::AbstractRequestXhr
+
+  # add to Request for xhr? support
+  klass = if defined? ActionController::AbstractRequest
+    ActionController::AbstractRequest
+  else # post Rails 2.3
+    ActionController::Request
   end
+  klass.send :include, XhrRedirect::AbstractRequestXhr
 end
