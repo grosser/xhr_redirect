@@ -8,19 +8,18 @@ module XhrRedirect
   end
 
   #add _xhr to redirect paths
-  def redirect_to_with_xhr(options={},response_status={})
+  def redirect_to_with_xhr(options={}, response_status={})
     if request.xhr?
       case options
-        when Hash then return redirect_to_with_xhr(url_for(options), response_status)
-        when %r{^\w+://.*|/} then return redirect_to_without_xhr(url_plus_xhr(options),response_status)
-        when :back
-          if request.env["HTTP_REFERER"]
-            return redirect_to_without_xhr(url_plus_xhr(request.env["HTTP_REFERER"]), :status=>status)
-          end
-          raise(RedirectBackError)
+      when Hash then return redirect_to_with_xhr(url_for(options), response_status)
+      when %r{^\w+://.*|^/} then return redirect_to_without_xhr(url_plus_xhr(options), response_status)
+      when :back
+        if request.env["HTTP_REFERER"]
+          return redirect_to_without_xhr(url_plus_xhr(request.env["HTTP_REFERER"]), response_status)
+        end
       end
     end
-    redirect_to_without_xhr(options,response_status)
+    redirect_to_without_xhr(options, response_status)
   end
 
   def url_plus_xhr(url)
