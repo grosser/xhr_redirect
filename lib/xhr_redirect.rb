@@ -1,3 +1,5 @@
+require 'xhr_redirect/abstract_request_xhr'
+
 module XhrRedirect
   def self.included(base)
     base.class_eval do
