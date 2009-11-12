@@ -1,12 +1,10 @@
-Xhr Redirect
-=============
-Normally when a xhr request is redirected, it is no longer xhr.  
-This causes all kinds of trouble when working with js requests.  
-Normally the JS framework should handle these redirects, and simply display  
-the redirected result, instead the result is a normal request.  
+Redirected xhr requests are now still xhr !
 
+( When redirected xhr requests are no longer xhr, all sort of trouble is caused for JS calls that rely on those redirects )
+
+### Details
  - When an xhr request is redirected, _xhr=1 will be added to the parameters
- - When a request with _xhr=1 comes in it as recognised as xhr request (also enhances testablility)
+ - Request with _xhr=1 are recognised as xhr ( also enhances testablility, simulate xhr responses by adding _xhr=1 )
 
 Install
 =======
@@ -15,7 +13,6 @@ Install
 TODO
 ====
  - find a more elegant solution
- - tests (works fine since > 1 year on production servers...)
 
 Author
 ======
