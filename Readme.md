@@ -1,6 +1,4 @@
-Redirected xhr requests are now still xhr !
-
-( When redirected xhr requests are no longer xhr, all sort of trouble is caused for JS calls that rely on those redirects )
+With xhr_redirect redirected xhr requests (read: ajax requests) stay xhr --> `request.xhr? == true`
 
 ### Details
  - When an xhr request is redirected, _xhr=1 will be added to the parameters
@@ -16,6 +14,6 @@ TODO
 
 Author
 ======
-[Michael Grosser](http://pragmatig.wordpress.com)  
-grosser.michael@gmail.com  
-Hereby placed under public domain, do what you want, just do not hold me accountable...  
+[Michael Grosser](http://grosser.it)<br/>
+michael@grosser.it<br/>
+Hereby placed under public domain, do what you want, just do not hold me accountable...
